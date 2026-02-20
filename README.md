@@ -86,9 +86,9 @@ yarn format
 │   │   ├── config.ts         # Locales, default locale, Locale type
 │   │   ├── routing.ts        # next-intl routing configuration
 │   │   ├── request.ts        # Server-side request config
-│   │   └── navigation.ts     # Typed Link, useRouter, usePathname
+│   │   └── navigation.ts     # Typed Link, useRouter, usePathname, getPathname
 │   ├── lib/
-│   │   ├── constants.ts      # SITE_URL, NAV_LINKS
+│   │   ├── constants.ts      # Env constants (SITE_URL, SITE_NAME, etc.), NAV_LINKS
 │   │   └── utils.ts          # cn() utility
 │   ├── types/
 │   │   └── next-intl.d.ts    # Typed translations
@@ -158,6 +158,17 @@ Edit the `:root` (light) and `.dark` sections in `globals.css` directly. Key var
 
 All colors use the oklch color space.
 
+## Fonts
+
+The project uses [Google Fonts](https://fonts.google.com/) loaded via `next/font/google` in `src/app/[locale]/layout.tsx`:
+
+| Font      | Variable           | Usage       |
+| --------- | ------------------ | ----------- |
+| Afacad    | `--font-afacad`    | `font-sans` |
+| Fira Code | `--font-fira-code` | `font-mono` |
+
+To change fonts, update the imports and variables in `layout.tsx` and the `--font-sans` / `--font-mono` mappings in `globals.css`.
+
 ## Dark Mode
 
 Dark mode uses `next-themes` with the `class` strategy. The `<html>` element gets a `dark` class, which Tailwind picks up via `@custom-variant dark (&:is(.dark *))` in `globals.css`.
@@ -170,11 +181,23 @@ Dark mode uses `next-themes` with the `class` strategy. The `<html>` element get
 
 **Options:**
 
-- `defaultTheme="system"` — follows OS preference (change to `"light"` or `"dark"` for a fixed default)
-- `enableSystem` — enables system preference detection
-- `disableTransitionOnChange` — prevents transition flicker on switch
+- `defaultTheme="system"` - follows OS preference (change to `"light"` or `"dark"` for a fixed default)
+- `enableSystem` - enables system preference detection
+- `disableTransitionOnChange` - prevents transition flicker on switch
 
 The toggle component is at `src/components/theme-toggle.tsx`. It provides Light / Dark / System options via a dropdown.
+
+## Page Transitions
+
+Page navigation uses the [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) via React 19's `<ViewTransition>` component and Next.js experimental support.
+
+**Configuration:**
+
+- `next.config.ts` - `experimental.viewTransition: true`
+- `src/app/[locale]/layout.tsx` - children wrapped in `<ViewTransition>`
+- `src/app/globals.css` - fade-in/fade-out keyframes on `::view-transition-old(*)` / `::view-transition-new(*)`
+
+To customize the animation, edit the keyframes in `globals.css`.
 
 ## SEO
 
@@ -215,7 +238,7 @@ Locale alternates are generated automatically for all routes.
 
 ## State Management
 
-This boilerplate doesn't include a state management library — `next-intl` handles locale state and `next-themes` handles theme state, so there's nothing extra needed out of the box.
+This boilerplate doesn't include a state management library - `next-intl` handles locale state and `next-themes` handles theme state, so there's nothing extra needed out of the box.
 
 When your project grows and you need global client state, choose based on your needs:
 
@@ -228,9 +251,9 @@ When your project grows and you need global client state, choose based on your n
 | **Providers needed**   | No                                           | No                                       | Yes                 | Yes                                            |
 | **SSR/RSC compatible** | Yes                                          | Yes                                      | Yes                 | Yes                                            |
 | **Best for**           | Most apps                                    | Fine-grained reactivity                  | Simple/rare updates | Large teams, complex state                     |
-| **Install**            | `yarn add zustand`                           | `yarn add jotai`                         | —                   | `yarn add @reduxjs/toolkit react-redux`        |
+| **Install**            | `yarn add zustand`                           | `yarn add jotai`                         | -                   | `yarn add @reduxjs/toolkit react-redux`        |
 
-**Recommendation: [Zustand](https://github.com/pmndrs/zustand)** — zero boilerplate, no providers, works naturally alongside Server Components. Use stores only in `'use client'` components.
+**Recommendation: [Zustand](https://github.com/pmndrs/zustand)** - zero boilerplate, no providers, works naturally alongside Server Components. Use stores only in `'use client'` components.
 
 ```ts
 // src/stores/my-store.ts
@@ -249,9 +272,9 @@ export const useMyStore = create<MyState>()((set) => ({
 
 **When to pick something else:**
 
-- **Jotai** — if you need atom-level granularity (e.g., a complex form with many independent fields)
-- **React Context** — if you have 1-2 values that rarely change (e.g., a user object)
-- **Redux Toolkit** — if your team already knows Redux or you need time-travel debugging
+- **Jotai** - if you need atom-level granularity (e.g., a complex form with many independent fields)
+- **React Context** - if you have 1-2 values that rarely change (e.g., a user object)
+- **Redux Toolkit** - if your team already knows Redux or you need time-travel debugging
 
 ## Key Conventions
 
@@ -260,5 +283,5 @@ export const useMyStore = create<MyState>()((set) => ({
 - Use `useTranslations` from `next-intl` in components.
 - Use `getTranslations` from `next-intl/server` in async server components and `generateMetadata`.
 - All pages go inside `src/app/[locale]/`.
-- In Next.js 16, `params` is a `Promise` — always `await` it.
-- All user-facing text must be in `messages/*.json` — no hardcoded strings.
+- In Next.js 16, `params` is a `Promise` - always `await` it.
+- All user-facing text must be in `messages/*.json` - no hardcoded strings.
