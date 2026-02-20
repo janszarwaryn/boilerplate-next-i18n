@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { NAV_LINKS, SITE_NAME } from '@/lib/constants';

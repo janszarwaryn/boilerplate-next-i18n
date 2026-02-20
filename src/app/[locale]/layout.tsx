@@ -1,4 +1,3 @@
-import { ViewTransition } from 'react';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -99,7 +98,7 @@ export default async function LocaleLayout({
             <div className="flex min-h-screen flex-col">
               <Header />
               <main id="main" className="flex flex-1 flex-col">
-                <ViewTransition>{children}</ViewTransition>
+                {children}
               </main>
               <Footer />
             </div>

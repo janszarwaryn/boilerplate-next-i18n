@@ -92,7 +92,7 @@ yarn format
 │   │   └── utils.ts          # cn() utility
 │   ├── types/
 │   │   └── next-intl.d.ts    # Typed translations
-│   └── middleware.ts          # Locale detection middleware
+│   └── proxy.ts               # Locale detection proxy (routing)
 ├── components.json            # shadcn/ui configuration
 ├── next.config.ts             # Next.js config with next-intl plugin
 └── tsconfig.json
@@ -186,18 +186,6 @@ Dark mode uses `next-themes` with the `class` strategy. The `<html>` element get
 - `disableTransitionOnChange` - prevents transition flicker on switch
 
 The toggle component is at `src/components/theme-toggle.tsx`. It provides Light / Dark / System options via a dropdown.
-
-## Page Transitions
-
-Page navigation uses the [View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) via React 19's `<ViewTransition>` component and Next.js experimental support.
-
-**Configuration:**
-
-- `next.config.ts` - `experimental.viewTransition: true`
-- `src/app/[locale]/layout.tsx` - children wrapped in `<ViewTransition>`
-- `src/app/globals.css` - fade-in/fade-out keyframes on `::view-transition-old(*)` / `::view-transition-new(*)`
-
-To customize the animation, edit the keyframes in `globals.css`.
 
 ## SEO
 
