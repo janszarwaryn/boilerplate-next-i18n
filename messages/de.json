@@ -1,0 +1,46 @@
+{
+  "Metadata": {
+    "title": "Next.js i18n Boilerplate",
+    "description": "Eine produktionsreife Next.js-Vorlage mit Internationalisierung"
+  },
+  "HomePage": {
+    "title": "Next.js i18n Boilerplate",
+    "description": "Eine produktionsreife Vorlage mit Internationalisierung, erstellt mit Next.js, Tailwind CSS und shadcn/ui."
+  },
+  "LanguageSwitcher": {
+    "en": "English",
+    "pl": "Polski",
+    "de": "Deutsch"
+  },
+  "Nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "ariaLabel": "Hauptnavigation",
+    "skipToContent": "Zum Inhalt springen",
+    "menu": "Menü"
+  },
+  "ThemeToggle": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "toggleTheme": "Design wechseln"
+  },
+  "Footer": {
+    "copyright": "© {year} Alle Rechte vorbehalten.",
+    "createdBy": "Erstellt von"
+  },
+  "AboutPage": {
+    "title": "Über uns",
+    "heading": "Über dieses Projekt",
+    "description": "Dieses Boilerplate bietet eine solide Grundlage für den Aufbau internationalisierter Webanwendungen mit Next.js. Es enthält Routing, Übersetzungen, Theming und eine Komponentenbibliothek sofort einsatzbereit.",
+    "cardTitle": "Für Entwickler gebaut",
+    "cardDescription": "Starten Sie Ihr nächstes mehrsprachiges Projekt in Minuten, nicht Stunden.",
+    "breadcrumbHome": "Startseite",
+    "breadcrumbAbout": "Über uns",
+    "imagePlaceholder": "Platzhalter-Bild"
+  },
+  "Error": {
+    "title": "Etwas ist schiefgelaufen",
+    "retry": "Erneut versuchen"
+  }
+}

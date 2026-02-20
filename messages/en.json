@@ -1,0 +1,46 @@
+{
+  "Metadata": {
+    "title": "Next.js i18n Boilerplate",
+    "description": "A production-ready Next.js starter template with internationalization"
+  },
+  "HomePage": {
+    "title": "Next.js i18n Boilerplate",
+    "description": "A production-ready starter template with internationalization, built with Next.js, Tailwind CSS, and shadcn/ui."
+  },
+  "LanguageSwitcher": {
+    "en": "English",
+    "pl": "Polski",
+    "de": "Deutsch"
+  },
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "ariaLabel": "Main navigation",
+    "skipToContent": "Skip to content",
+    "menu": "Menu"
+  },
+  "ThemeToggle": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggleTheme": "Toggle theme"
+  },
+  "Footer": {
+    "copyright": "© {year} All rights reserved.",
+    "createdBy": "Created by"
+  },
+  "AboutPage": {
+    "title": "About",
+    "heading": "About this project",
+    "description": "This boilerplate provides a solid foundation for building internationalized web applications with Next.js. It includes routing, translations, theming, and a component library out of the box.",
+    "cardTitle": "Built for developers",
+    "cardDescription": "Start building your next multilingual project in minutes, not hours.",
+    "breadcrumbHome": "Home",
+    "breadcrumbAbout": "About",
+    "imagePlaceholder": "Image placeholder"
+  },
+  "Error": {
+    "title": "Something went wrong",
+    "retry": "Try again"
+  }
+}
