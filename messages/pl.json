@@ -42,5 +42,10 @@
   "Error": {
     "title": "Coś poszło nie tak",
     "retry": "Spróbuj ponownie"
+  },
+  "NotFoundPage": {
+    "title": "Strona nie znaleziona",
+    "description": "Strona, której szukasz, nie istnieje.",
+    "backHome": "Wróć na stronę główną"
   }
 }
