@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const route of routes) {
     entries.push({
       url: `${SITE_URL}${await getPathname({ locale: defaultLocale, href: route })}`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-03-11'),
       changeFrequency: 'monthly',
       priority: route === '/' ? 1 : 0.8,
       alternates: {

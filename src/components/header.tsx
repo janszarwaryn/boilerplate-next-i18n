@@ -32,6 +32,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`text-sm transition-colors ${isActive ? 'text-foreground underline underline-offset-4' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                   {t(link.label)}

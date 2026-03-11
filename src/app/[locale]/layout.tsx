@@ -7,7 +7,17 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { SITE_URL } from '@/lib/constants';
+import type { Viewport } from 'next';
 import '../globals.css';
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1a2e' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
+};
 
 const afacad = Afacad({
   variable: '--font-afacad',
@@ -33,7 +43,10 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: t('title'),
+    title: {
+      default: t('title'),
+      template: `%s | ${t('title')}`,
+    },
     description: t('description'),
     openGraph: {
       title: t('title'),
